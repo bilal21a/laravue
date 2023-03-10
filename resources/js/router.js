@@ -14,23 +14,23 @@ const routes = [{
         path: '/login',
         name: 'Login',
         component: login,
-        meta:{
-            requiresAuth:false
+        meta: {
+            requiresAuth: false
         }
     },
     {
         path: '/register',
         name: 'Register',
         component: register,
-        meta:{
-            requiresAuth:false
+        meta: {
+            requiresAuth: false
         }
-    },    {
+    }, {
         path: '/dashboard',
         name: 'Dashboard',
         component: dashboard,
-        meta:{
-            requiresAuth:true
+        meta: {
+            requiresAuth: true
         }
     },
 ];
@@ -39,12 +39,12 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
-router.beforeEach((to,from)=>{
-if (to.meta.requiresAuth && !localStorage.getItem('token')){
-return {name:'Login'};
-}
-if (to.meta.requiresAuth==false && localStorage.getItem('token')){
-    return {name:'Dashboard'};
-}
+router.beforeEach((to, from) => {
+    if (to.meta.requiresAuth && !localStorage.getItem('token')) {
+        return { name: 'Login' };
+    }
+    if (to.meta.requiresAuth == false && localStorage.getItem('token')) {
+        return { name: 'Dashboard' };
+    }
 })
 export default router;
