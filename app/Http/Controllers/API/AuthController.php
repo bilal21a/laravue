@@ -14,16 +14,16 @@ class AuthController extends Controller
     {
         $validator=Validator::make($request->all(),[
             'name'=>'required', 
-            'email'=>'required|email', 
+            'email'=>'required|email|unique:users,email',
             'password'=>'required', 
             'c_password'=>'required|same:password', 
         ]);
         if ($validator->fails()) {
             $response=[
                 'success'=>false,
-                'message'=>$validator->errors()
+                'message'=>$validator->errors()->first()
             ];
-            return response()->json($response,400);
+            return response()->json($response,200);
         }
         $input=$request->all();
         $input['password']=bcrypt($input['password']);

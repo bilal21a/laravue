@@ -22,6 +22,8 @@
 <script>
 import {reactive,ref} from "vue";
 import {useRouter} from "vue-router";
+import AppLayout from '../layout/app.vue';
+
 export default {
   setup(){
     let form =reactive({

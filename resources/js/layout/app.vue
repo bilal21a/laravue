@@ -28,7 +28,30 @@
     </div>
   </nav>
     <div>
-
+      <div class="overlay loading_overlay" v-if="showLoader">
+        <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
         <router-view></router-view>
     </div>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      showLoader: false,
+    };
+  },
+  methods: {
+    show() {
+      this.showLoader = true;
+    },
+    hide() {
+      this.showLoader = false;
+    },
+  },
+};
+</script>
