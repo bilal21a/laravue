@@ -3,5 +3,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router';
 import app from './layout/app.vue';
-
-createApp(app).use(router).mount('#app');
+import store from "./store";
+createApp(app)
+    .use(router)
+    .use(store)
+    .mount('#app');

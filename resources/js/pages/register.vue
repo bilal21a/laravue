@@ -25,6 +25,7 @@
 <script>
 import {reactive,ref} from "vue";
 import {useRouter} from "vue-router";
+import {useStore} from "vuex";
 export default {
   setup(){
     let form =reactive({
@@ -34,7 +35,7 @@ export default {
       c_password:'',
     });
     const router=useRouter()
-
+    const store=useStore()
 
     let error=ref('')
     let type=ref('')
@@ -46,7 +47,7 @@ export default {
             if (data.success){
               error.value=data.message
               type.value="success"
-              localStorage.setItem('token',data.data.token)
+              store.dispatch('setToken',data.data.token)
               router.push({name:"Dashboard"})
             }else{
               error.value=data.message

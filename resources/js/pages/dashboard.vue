@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">Welcome to Vue Js</h5>
-      <p class="card-text">Happy Learning</p>
+      <p class="card-text">{{$store.getters.getToken}}</p>
       <button class="btn btn-primary" @click="logout">Logout</button>
     </div>
     <div class="card-footer text-muted">
@@ -16,12 +16,15 @@
 
 <script>
 import {useRouter} from "vue-router";
+import {useStore} from "vuex";
 
 export default {
+
     setup(){
       const router=useRouter()
+      const store=useStore()
       function logout(){
-        localStorage.removeItem('token')
+        store.dispatch('removeToken')
         router.push({name:"Login"})
       }
       return {logout}

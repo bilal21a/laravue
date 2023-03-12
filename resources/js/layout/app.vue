@@ -11,13 +11,13 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
+          <router-link class="nav-link" to="/login" v-if="$store.getters.getToken===0">Login</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/register">Register</router-link>
+          <router-link class="nav-link" to="/register" v-if="$store.getters.getToken===0">Register</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+          <router-link class="nav-link" to="/dashboard" v-if="$store.getters.getToken!==0">Dashboard</router-link>
         </li>
 
       </ul>
